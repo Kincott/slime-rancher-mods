@@ -101,7 +101,7 @@ namespace SRHud
         private static void Decorate(PurchaseUI.Purchasable p, GameObject row)
         {
             State state = StateOf(p);
-            Transform existing = row.transform.Find(StatusName);
+            Transform existing = Host(row).Find(StatusName);
             RectTransform status = existing != null ? (RectTransform)existing : Build(row);
 
             Image bar = status.Find("Bar").GetComponent<Image>();
@@ -137,9 +137,22 @@ namespace SRHud
             group.alpha = state == State.Owned ? 0.55f : 1f;
         }
 
+        // The visible body of a list entry: the button's background graphic. The entry's root object does not
+        // always have the row's size (in the empty-plot menu it does not), which displaced or squashed the tags.
+        private static Transform Host(GameObject row)
+        {
+            Selectable s = row.GetComponent<Selectable>();
+            if (s != null && s.targetGraphic != null && s.targetGraphic.rectTransform.rect.height > 1f)
+            {
+                return s.targetGraphic.transform;
+            }
+            Transform content = row.transform.Find("Content");
+            return content != null ? content : row.transform;
+        }
+
         private static RectTransform Build(GameObject row)
         {
-            RectTransform status = Theme.Rect(StatusName, row.transform);
+            RectTransform status = Theme.Rect(StatusName, Host(row));
             Theme.Fill(status, 0f);
             status.SetAsLastSibling();
 

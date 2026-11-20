@@ -16,6 +16,10 @@ namespace SRHud
         {
             instance = this;
             Config = HudConfig.LoadOrCreate();
+            if (Config.Enabled)
+            {
+                ActivatePrompt.Apply(HarmonyInstance);
+            }
             if (Config.ThemeMenus)
             {
                 MenuTheme.Apply(HarmonyInstance);
