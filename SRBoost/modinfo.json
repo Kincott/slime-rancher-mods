@@ -1,0 +1,7 @@
+{
+  "id": "srboost",
+  "name": "SR Boost",
+  "version": "1.0.0",
+  "author": "Kincott",
+  "description": "Removes the 120 FPS cap, extends the highest graphics settings, and logs FPS stats. Settings in SRBoost.ini."
+}
