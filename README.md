@@ -10,7 +10,7 @@ Each mod lives on its own branch; `main` holds what they share (build script, do
 | `sr-hud` | SR HUD (`SRHud.dll`) | Redesigned HUD, dark theme for every menu, shop status |
 | `sr-market` | SR Market (`SRMarket.dll`) | Plort price history and forecast, on the market screen and with a key |
 | `sr-corrals` | SR Corrals (`SRCorrals.dll`) | Extra corral, garden and coop upgrades (collector, feeder, calm, production, fertilizer, harvester, incubator...), silver then gold in the world |
-| `sr-fusion` | SR Fusion (`SRFusion.dll`) | One-per-server fused slime, unlocked once every plort is discovered (planned) |
+| `sr-fusion` | SR Fusion (`SRFusion.dll`) | One-per-server giant fused slime (fusion chamber, one plort of each + a pink slime) producing cosmic plorts worth a fortune |
 
 SRMP refuses to connect when the two players' mod lists differ, so both players install the same mods.
 
