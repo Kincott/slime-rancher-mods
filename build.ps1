@@ -27,7 +27,7 @@ $out = Join-Path $PSScriptRoot "bin"
 New-Item -ItemType Directory -Force $out | Out-Null
 
 $built = 0
-foreach ($mod in @("SRMPFixes", "SRBoost", "SRHud", "SRMarket", "SRCorrals", "SRFusion")) {
+foreach ($mod in @("SRMPFixes", "SRBoost", "SRHud", "SRMarket", "SRCorrals", "SRFusion", "SRVacpack", "SRSeasons", "SRPing")) {
     $root = Join-Path $PSScriptRoot $mod
     # Each mod lives on its own branch: build only the ones present in this checkout.
     if (-not (Test-Path (Join-Path $root "src"))) { continue }
