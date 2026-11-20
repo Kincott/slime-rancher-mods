@@ -1,0 +1,8 @@
+{
+  "id": "srmpfixes",
+  "name": "SRMP Fixes",
+  "version": "1.0.0",
+  "author": "Kincott",
+  "description": "Plort collectors keep working after a player disconnects, and no more Tabby largo-search error spam.",
+  "load_after": [ "srmp" ]
+}
