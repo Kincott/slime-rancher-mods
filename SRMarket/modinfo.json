@@ -1,0 +1,7 @@
+{
+  "id": "srmarket",
+  "name": "SR Market",
+  "version": "0.1.0",
+  "author": "Kincott",
+  "description": "Plort price history and forecast: a chart on each market tile and a full panel with a key. Settings in SRMarket.ini."
+}
