@@ -1,0 +1,7 @@
+{
+  "id": "srhud",
+  "name": "SR HUD",
+  "version": "0.1.0",
+  "author": "Kincott",
+  "description": "Redesigned dark-glass HUD: compact vitals, clearer vacpack slots, FPS counter. Settings in SRHud.ini."
+}
