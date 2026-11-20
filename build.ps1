@@ -17,6 +17,8 @@ $refs = @(
     (Join-Path $managed "Unity.TextMeshPro.dll"),
     (Join-Path $managed "UnityEngine.InputLegacyModule.dll"),
     (Join-Path $managed "UnityEngine.ParticleSystemModule.dll"),
+    (Join-Path $managed "UnityEngine.PhysicsModule.dll"),
+    (Join-Path $managed "UnityEngine.AudioModule.dll"),
     (Join-Path $managed "SRML.dll"),
     (Join-Path $GameDir "SRML\Libs\0Harmony.dll"),
     (Join-Path $GameDir "SRML\Mods\SRMP.dll")
