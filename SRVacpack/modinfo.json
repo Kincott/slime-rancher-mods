@@ -1,0 +1,7 @@
+{
+  "id": "srvacpack",
+  "name": "SR Vacpack",
+  "version": "0.1.0",
+  "author": "Kincott",
+  "description": "Store largos in the vacpack, and keep vacuuming an item into an empty slot when its slot is full. Settings in SRVacpack.ini."
+}
