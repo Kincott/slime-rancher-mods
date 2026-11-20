@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using MonomiPark.SlimeRancher.DataModel;
 using UnityEngine;
 
@@ -72,15 +73,41 @@ namespace SRMarket
             get { return SRSingleton<SceneContext>.Instance.GameModeConfig.GetModeSettings().plortMarketDynamic; }
         }
 
-        // Price for `day` given a saturation value, exactly as GetTargetValue computes it.
+        // Price for `day` given a saturation value, exactly as GetTargetValue computes it (including SR Seasons'
+        // in-season bonus when that mod is installed, since it multiplies GetTargetValue's result).
         internal static float PriceFor(Plort p, float saturation, int day)
         {
-            if (!Dynamic) return p.BaseValue * 1.5f;
+            if (!Dynamic) return p.BaseValue * 1.5f * SeasonFactor(p.Id, day);
             WorldModel world = World;
             float satFactor = 1f + Mathf.Clamp01((p.FullSaturation - saturation) / p.FullSaturation);
             float market = Noise.Noise.PerlinNoise(day, world.econSeed, -10000f, 10f, 0.6f, 1f) + 0.7f;
             float own = Noise.Noise.PerlinNoise(day, world.econSeed, p.Id.GetHashCode() * 10000, 10f, 0.6f, 1f) + 0.7f;
-            return p.BaseValue * satFactor * market * own;
+            return p.BaseValue * satFactor * market * own * SeasonFactor(p.Id, day);
+        }
+
+        // SR Seasons' price factor, found by name so this mod works with or without it.
+        private static readonly MethodInfo seasonFactor = FindSeasonFactor();
+
+        private static MethodInfo FindSeasonFactor()
+        {
+            Type season = Type.GetType("SRSeasons.Season, SRSeasons");
+            return season != null
+                ? season.GetMethod("PriceFactor", BindingFlags.Public | BindingFlags.Static, null,
+                    new[] { typeof(Identifiable.Id), typeof(int) }, null)
+                : null;
+        }
+
+        private static float SeasonFactor(Identifiable.Id id, int day)
+        {
+            if (seasonFactor == null) return 1f;
+            try
+            {
+                return (float)seasonFactor.Invoke(null, new object[] { id, day });
+            }
+            catch (Exception)
+            {
+                return 1f;
+            }
         }
 
         // Prices of the next `days` days if nobody sells from now on (today's sales already count).
