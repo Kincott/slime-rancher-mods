@@ -1,4 +1,4 @@
-# Builds the mods (SRMPFixes.dll, SRBoost.dll, SRHud.dll) with the C# compiler that ships with Windows (.NET Framework 4),
+# Builds the mods (one per branch, see README) with the C# compiler that ships with Windows (.NET Framework 4),
 # so no SDK is needed. References come straight from the game install; nothing from the game is copied here.
 param(
     [string]$GameDir = "C:\Program Files (x86)\Steam\steamapps\common\Slime Rancher"
@@ -25,7 +25,7 @@ $out = Join-Path $PSScriptRoot "bin"
 New-Item -ItemType Directory -Force $out | Out-Null
 
 $built = 0
-foreach ($mod in @("SRMPFixes", "SRBoost", "SRHud")) {
+foreach ($mod in @("SRMPFixes", "SRBoost", "SRHud", "SRMarket", "SRCorrals", "SRFusion")) {
     $root = Join-Path $PSScriptRoot $mod
     # Each mod lives on its own branch: build only the ones present in this checkout.
     if (-not (Test-Path (Join-Path $root "src"))) { continue }
@@ -41,4 +41,4 @@ foreach ($mod in @("SRMPFixes", "SRBoost", "SRHud")) {
     Write-Host "Built $dll"
     $built++
 }
-if ($built -eq 0) { Write-Host "No mod in this checkout: switch to srmp-fixes, sr-boost or sr-hud." }
+if ($built -eq 0) { Write-Host "No mod in this checkout: switch to a mod branch (see README)." }

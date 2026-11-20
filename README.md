@@ -1,13 +1,16 @@
 # Slime Rancher mods
 
-Three independent SRML mods for Slime Rancher, made for playing co-op with SRMP (Slime Rancher Multiplayer
-0.0.1584). Each mod lives on its own branch; `main` holds what they share (build script, docs).
+Independent SRML mods for Slime Rancher, made for playing co-op with SRMP (Slime Rancher Multiplayer 0.0.1584).
+Each mod lives on its own branch; `main` holds what they share (build script, docs).
 
 | Branch | Mod | What it does |
 |---|---|---|
 | `srmp-fixes` | SRMP Fixes (`SRMPFixes.dll`) | Fixes SRMP sync bugs, a save-wiping bug and re-enables achievements, without modifying SRMP |
 | `sr-boost` | SR Boost (`SRBoost.dll`) | Removes the 120 FPS cap, boosts graphics, smart feeders, FPS measurements |
 | `sr-hud` | SR HUD (`SRHud.dll`) | Redesigned HUD, dark theme for every menu, shop status |
+| `sr-market` | SR Market (`SRMarket.dll`) | Plort price history and forecast, on the market screen and with a key |
+| `sr-corrals` | SR Corrals (`SRCorrals.dll`) | Extra corral upgrades: collector, feeder, calm, production (planned) |
+| `sr-fusion` | SR Fusion (`SRFusion.dll`) | One-per-server fused slime, unlocked once every plort is discovered (planned) |
 
 SRMP refuses to connect when the two players' mod lists differ, so both players install the same mods.
 
