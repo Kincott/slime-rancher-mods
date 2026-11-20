@@ -1,6 +1,19 @@
-# SRMP Fixes
+# Slime Rancher mods
 
-A small SRML mod that fixes two bugs of the Slime Rancher Multiplayer mod (SRMP 0.0.1584), without modifying SRMP itself.
+Three independent SRML mods for Slime Rancher, made for playing co-op with SRMP (Slime Rancher Multiplayer
+0.0.1584). Each mod lives on its own branch; `main` holds what they share (build script, docs).
+
+| Branch | Mod | What it does |
+|---|---|---|
+| `srmp-fixes` | SRMP Fixes (`SRMPFixes.dll`) | Fixes SRMP sync bugs, a save-wiping bug and re-enables achievements, without modifying SRMP |
+| `sr-boost` | SR Boost (`SRBoost.dll`) | Removes the 120 FPS cap, boosts graphics, smart feeders, FPS measurements |
+| `sr-hud` | SR HUD (`SRHud.dll`) | Redesigned HUD, dark theme for every menu, shop status |
+
+SRMP refuses to connect when the two players' mod lists differ, so both players install the same mods.
+
+## SRMP Fixes
+
+Fixes bugs of SRMP without modifying SRMP itself.
 
 | Bug | Cause | Fix |
 |---|---|---|
@@ -78,11 +91,15 @@ Uninstall: delete `SRML\Mods\SRMPFixes.dll`.
 
 ## Build
 
+Check out the mod's branch, then:
+
 ```powershell
+git switch sr-hud                 # or srmp-fixes, sr-boost
 .\build.ps1                       # default Steam path
 .\build.ps1 -GameDir "D:\...\Slime Rancher"
 ```
 
+The script builds whichever mods are present in the checkout.
+
 Uses the C# compiler shipped with Windows (.NET Framework 4), so no SDK is needed. It references the game, SRML,
-Harmony and SRMP DLLs from the game install; none of them are stored in this repo. Output: `bin\SRMPFixes.dll`
-and `bin\SRBoost.dll`.
+Harmony and SRMP DLLs from the game install; none of them are stored in this repo. Output: `bin\<Mod>.dll`.
