@@ -1,0 +1,8 @@
+{
+  "id": "srping",
+  "name": "SR Ping",
+  "version": "0.1.0",
+  "author": "Kincott",
+  "description": "Press middle mouse to ping a spot or an object for your co-op partner: marker, distance, edge arrow and sound.",
+  "load_after": [ "srmp" ]
+}
