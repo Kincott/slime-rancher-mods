@@ -72,7 +72,9 @@ namespace SRSeasons
         private void Update()
         {
             if (hud == null) { Destroy(gameObject); return; }
-            group.alpha = hud.uiContainer != null && hud.uiContainer.activeInHierarchy ? 1f : 0f;
+            Map map = SRSingleton<Map>.Instance;
+            bool mapOpen = map != null && map.mapUI != null && map.mapUI.gameObject.activeInHierarchy; // it would cover the map title
+            group.alpha = hud.uiContainer != null && hud.uiContainer.activeInHierarchy && !mapOpen ? 1f : 0f;
 
             int day = SRSingleton<SceneContext>.Instance.TimeDirector.CurrDay();
             SeasonId s = Season.Of(day);
